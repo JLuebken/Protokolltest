@@ -1,0 +1,120 @@
+% Autor: Simon May
+% Datum: 2016-10-13
+
+% --- Pakete einbinden
+% --- Pakete erweitern LaTeX um zusätzliche Funktionen.
+%     Dies ist ein Satz nützlicher Pakete.
+
+% Silbentrennung etc.; Sprache wird durch Option bei \documentclass festgelegt
+\usepackage{babel}
+% Verwendung der Zeichentabelle T1 (Sonderzeichen etc.)
+\usepackage[T1]{fontenc}
+% Legt die Zeichenkodierung der Eingabedatei fest, z.B. UTF8
+\usepackage[utf8]{inputenc}
+% Schriftart
+\usepackage{lmodern}
+% Zusätzliche Sonderzeichen
+\usepackage{textcomp}
+
+% Nutzen von +, -, *, / in \setlength u.ä. (z.B. \setlength{\a + 3cm})
+\usepackage{calc}
+% Wird benötigt, um \ifthenelse zu benutzen
+\usepackage{xifthen}
+% Optionen für eigene definierte Befehle
+\usepackage{xparse}
+
+% Verbessertes Aussehen von Text
+\usepackage{microtype}
+% Automatische Formatierung von Daten
+\usepackage[useregional]{datetime2}
+% Wird für Kopf- und Fußzeile benötigt
+\usepackage{scrlayer-scrpage}
+% Einfaches Wechseln zwischen unterschiedlichen Zeilenabständen
+\usepackage{setspace}
+% Optionen für Listen (enumerate, itemize, …)
+\usepackage{enumitem}
+% Automatische Anführungszeichen
+\usepackage{csquotes}
+% Zusätzliche Optionen für Tabellen (tabular)
+\usepackage{array}
+
+% Mathepaket (intlimits: Grenzen über/unter Integralzeichen)
+\usepackage[intlimits]{amsmath}
+% Mathe-Symbole, \mathbb etc.
+\usepackage{amssymb}
+% Weitere Mathebefehle
+\usepackage{mathtools}
+% "Schöne" Brüche im Fließtext
+\usepackage{xfrac}
+% Ermöglicht die Nutzung von \SI{Zahl}{Einheit} u.a.
+\usepackage{siunitx}
+% Definition von Unicode-Symbolen; Nach [utf8]inputenc laden!
+\usepackage{newunicodechar}
+% Unicode-Formeln mit pdfLaTeX
+\input{tex_files/99_pdflatex_unicode-math.tex}
+
+% Farben
+\usepackage{xcolor}
+% Zum flexiblen Einbinden von Grafiken (\includegraphics)
+\usepackage{graphicx}
+% .tex-Dateien mit \includegraphics einbinden
+\usepackage{gincltex}
+% Mehr erlaubte Zeichen in Dateinamen für graphicx
+\usepackage{grffile}
+% Abbildungen im Fließtext
+\usepackage{wrapfig}
+% Zitieren, Bibliographie (Biber als Bibliographie-Programm verwenden!)
+\usepackage[style=verbose, backend=biber]{biblatex}
+% Abbildungen nebeneinander (subfigure, subtable)
+\usepackage{subcaption}
+
+% Verlinkt Textstellen im PDF-Dokument
+\usepackage[unicode]{hyperref}
+% „Schlaue“ Referenzen (nach hyperref laden!)
+\usepackage{cleveref}
+
+
+% --- Einstellungen
+% -- latex
+% Nummerierung der Formeln entsprechend der Section (z.B. 1.1)
+\numberwithin{equation}{section}
+% 1,5-facher Zeilenabstand
+\onehalfspacing
+
+% -- koma-script
+% Anpassen des Textes bei captions
+\addtokomafont{captionlabel}{\small\bfseries}
+\addtokomafont{caption}{\small}
+
+% -- csquotes
+% Anführungszeichen automatisch umwandeln
+\MakeOuterQuote{"}
+
+% -- siunitx
+\sisetup{
+	locale=DE,
+	separate-uncertainty,
+	output-product=\cdot,
+	quotient-mode=fraction,
+	per-mode=fraction,
+	fraction-function=\sfrac
+}
+
+% -- hyperref
+\hypersetup{
+	% Links/Verweise mit Kasten der Dicke 0.5pt versehen
+	pdfborder={0 0 0.5}
+}
+
+% -- cleveref
+\crefname{equation}{}{}
+\Crefname{equation}{}{}
+
+% -- biblatex (Literaturverzeichnis)
+\IfFileExists{res/literatur.bib}{
+	\addbibresource{res/literatur.bib}
+}{}
+
+\begin{document}
+	Inhalt...
+\end{document}
